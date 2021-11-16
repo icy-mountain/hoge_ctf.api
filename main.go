@@ -27,7 +27,7 @@ func scoring(c echo.Context) error {
 	if err := c.Bind(mes); err != nil {
 		mes.Work = "scoring mes error!"
 		return c.JSON(http.StatusOK, mes)
-    }
+	}
 
 	var quiz []Quiz
 	result := db.Where("genre = ? AND num = ?", mes.Genre, mes.Num).Find(&quiz)
@@ -54,7 +54,7 @@ func show(c echo.Context) error {
 	if err := c.Bind(mes); err != nil {
 		mes.Work = "show mes error!"
 		return c.JSON(http.StatusOK, mes)
-    }
+	}
 
 	var quiz []Quiz
 	result := db.Find(&quiz)
@@ -99,7 +99,7 @@ func insert_row(c echo.Context) error {
 	if err := c.Bind(mes); err != nil {
 		mes.Work = "insert_row mes error!"
 		return c.JSON(http.StatusOK, mes)
-    }
+	}
 	row := Quiz{Genre: mes.Genre, Num: mes.Num, Caught: "0", Flag: mes.Flag}
 	result := db.Create(&row)
 	if result.Error != nil {
@@ -117,7 +117,7 @@ func delete_row(c echo.Context) error {
 	if err := c.Bind(mes); err != nil {
 		mes.Work = "delete_row mes error!"
 		return c.JSON(http.StatusOK, mes)
-    }
+	}
 
 	var quiz []Quiz
 	result := db.Where("genre = ? AND num = ?", mes.Genre, mes.Num).Delete(&quiz)
@@ -137,7 +137,7 @@ func get_row(c echo.Context) error {
 	if err := c.Bind(mes); err != nil {
 		mes.Work = "get_row mes error!"
 		return c.JSON(http.StatusOK, mes)
-    }
+	}
 
 	var quiz []Quiz
 	result := db.Where("genre = ? AND num = ?", mes.Genre, mes.Num).Find(&quiz)
